@@ -50,7 +50,7 @@
     }
 
     function submitUsers() {
-        emits('usersList', this.users)
+        emits('usersList', users)
         emits('close')
     }
 
