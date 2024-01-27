@@ -14,8 +14,9 @@
                         v-model="user.name"
                     >
                 </div>
-                <button type="submit" @click="submitUsers()" @submit="submitUsers()">Подтвердить</button>
             </div>
+            <button type="submit" @click="submitUsers()" @submit="submitUsers()">Подтвердить</button>
+
             <div class="modal__content__close">
                 <button @click="$emit('close')">X</button>
             </div>     
@@ -39,8 +40,8 @@
     const users = reactive([])
 
     function setUsersCount() {
-        for (let i = 0; i < this.usersCount; i++) {
-            this.users.push({
+        for (let i = 0; i < usersCount.value; i++) {
+            users.push({
                 name: `Гость ${i+1}`, 
                 pos: [],
                 total: 0
@@ -78,12 +79,16 @@
             gap: 15px;
             background: #000;
             width: 50%;
-            height: 50%;
+            min-height: 50%;
+            max-height: 85%;
 
             &__users {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
+                overflow: auto;
+                width: 50%;
+                align-items: center;
             }
 
             &__close {
