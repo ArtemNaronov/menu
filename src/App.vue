@@ -27,7 +27,7 @@
   import User from "./components/User.vue";
 
   const showModal = ref(true)
-  const userList = reactive([])
+  const userList = ref([])
 
 </script>
 
