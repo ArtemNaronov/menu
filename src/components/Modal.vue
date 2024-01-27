@@ -1,7 +1,7 @@
 <template>
     <div class="modal">
         <div class="modal__content">
-            {{ users.length == 0 ? 'Укажителей количество гостей' : 'Укажителей гостей' }}
+            {{ users.length == 0 ? 'Укажите количество гостей' : 'Укажителей гостей' }}
             <div class="input__group" v-if="users.length == 0">
                 <input type="number" v-model="usersCount" min="0">
                 <button @click="setUsersCount()">ОК</button>
@@ -82,6 +82,11 @@
             min-height: 50%;
             max-height: 85%;
 
+            @media (max-width: 768px) {
+                width: 90%;
+                padding: 75px 0;
+            }
+
             &__users {
                 display: flex;
                 flex-direction: column;
@@ -89,6 +94,10 @@
                 overflow: auto;
                 width: 50%;
                 align-items: center;
+
+                @media (max-width: 768px) {
+                    width: 90%;
+                }
             }
 
             &__close {
