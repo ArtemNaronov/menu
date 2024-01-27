@@ -4,18 +4,18 @@
       <Modal 
         v-if="showModal" 
         @close="showModal=false" 
-        @usersList="(users) => usersList = users"
+        @usersList="(users) => userList = [... users]"
       />
 
       <div class="users">
           <User 
-            v-for="(user, i) in usersList" :key="i" class="users__item"
+            v-for="(user, i) in userList" :key="i" class="users__item"
             :name="user.name" 
             :positions="user.pos" 
             :total="user.total" 
             @setTotal="(setTotal) => user.total = setTotal"
           />
-          <span>Общая сумма заказа: {{ usersList.length ? usersList.map(item => item.total).reduce((sum, current) => sum + current) : 0 }}</span>
+          <span>Общая сумма заказа: {{ userList.length ? userList.map(item => item.total).reduce((sum, current) => sum + current) : 0 }}</span>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@
   import User from "./components/User.vue";
 
   const showModal = ref(true)
-  const usersList = reactive([])
+  const userList = reactive([])
 
 </script>
 
