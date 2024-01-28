@@ -3,7 +3,7 @@
         <div class="modal__content">
             {{ users.length == 0 ? 'Укажите количество гостей' : 'Укажителей гостей' }}
             <div class="input__group" v-if="users.length == 0">
-                <input type="number" v-model="usersCount" min="0">
+                <input type="number" v-model="usersCount" min="0" max="15">
                 <button @click="setUsersCount()">ОК</button>
             </div>      
             <div class="modal__content__users" v-if="users.length">
@@ -15,7 +15,14 @@
                     >
                 </div>
             </div>
-            <button type="submit" @click="submitUsers()" @submit="submitUsers()">Подтвердить</button>
+            <button 
+                v-if="users.length"
+                type="submit" 
+                @click="submitUsers()" 
+                @submit="submitUsers()"
+            >
+                Подтвердить
+            </button>
 
             <div class="modal__content__close">
                 <button @click="$emit('close')">X</button>
